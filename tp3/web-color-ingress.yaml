@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-color--ingress
+  namespace: production
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: web.simple-color.info
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: service-web-color
+                port:
+                  number: 8080
